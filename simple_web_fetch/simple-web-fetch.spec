@@ -1,18 +1,18 @@
 # -*- mode: python ; coding: utf-8 -*-
+from PyInstaller.utils.hooks import collect_data_files
+
+# Resolve package data from the installed packages so the spec works on both
+# Windows (.venv/Lib/site-packages) and macOS/Linux (.venv/lib/pythonX.Y/site-packages).
+datas = []
+for pkg in ('apify_fingerprint_datapoints', 'browserforge', 'tld', 'trafilatura', 'justext'):
+    datas += collect_data_files(pkg)
 
 
 a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[
-        ('.venv/Lib/site-packages/apify_fingerprint_datapoints/data', 'apify_fingerprint_datapoints/data'),
-        ('.venv/Lib/site-packages/browserforge/injectors/data', 'browserforge/injectors/data'),
-        ('.venv/Lib/site-packages/tld/res', 'tld/res'),
-        ('.venv/Lib/site-packages/trafilatura/settings.cfg', 'trafilatura'),
-        ('.venv/Lib/site-packages/trafilatura/data', 'trafilatura/data'),
-        ('.venv/Lib/site-packages/justext/stoplists', 'justext/stoplists'),
-    ],
+    datas=datas,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
