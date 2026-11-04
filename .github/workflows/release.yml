@@ -25,6 +25,8 @@ jobs:
   build:
     needs: setup
     strategy:
+      # Let every platform finish so each one's error shows up
+      fail-fast: false
       matrix:
         include:
           - os: windows-latest
