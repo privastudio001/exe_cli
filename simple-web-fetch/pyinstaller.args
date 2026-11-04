@@ -1,0 +1,5 @@
+--collect-data apify_fingerprint_datapoints
+--collect-data browserforge
+--collect-data tld
+--collect-data trafilatura
+--collect-data justext

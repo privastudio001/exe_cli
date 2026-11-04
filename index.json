@@ -62,29 +62,29 @@
       }
     },
     {
-      "name": "simple_web_fetch",
+      "name": "simple-web-fetch",
       "version": "1.0.0",
       "platforms": {
         "windows-x86_64": {
           "bin": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_web_fetch-v1.0.0/simple_web_fetch-windows-x86_64.exe",
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v1.0.0/simple-web-fetch-windows-x86_64.exe",
             "sha256": "2e28df401cb4585813df6238b94f49e5e981913ab7e77c55ef0fd5c3490132f9",
             "size": 12676566
           },
           "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_web_fetch-v1.0.0/SKILL.md",
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v1.0.0/SKILL.md",
             "sha256": "52df0d3a56b2d53a953e199372b70a67fe42a56c26601ffaa41e64c1f5740cd6",
             "size": 1619
           }
         },
         "macos-aarch64": {
           "bin": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_web_fetch-v1.0.0/simple_web_fetch-macos-aarch64",
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v1.0.0/simple-web-fetch-macos-aarch64",
             "sha256": "25e38ceae9016bc52ad1decf6114c089937c19c08c127c01516f14e563aa532f",
             "size": 13213171
           },
           "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_web_fetch-v1.0.0/SKILL.md",
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v1.0.0/SKILL.md",
             "sha256": "52df0d3a56b2d53a953e199372b70a67fe42a56c26601ffaa41e64c1f5740cd6",
             "size": 1619
           }
