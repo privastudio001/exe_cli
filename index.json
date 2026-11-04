@@ -8,25 +8,25 @@
         "windows-x86_64": {
           "bin": {
             "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/remider-windows-x86_64.exe",
-            "sha256": "cec6430895bb81a39a94497612c9a34f74a6a60d87486f8bc5c76d5bb1c677e9",
-            "size": 1004902
+            "sha256": "4e0b93f64b925bf40a55bc8423303d2202742477eb0d014a19ebdee7e5b3ce4f",
+            "size": 880128
           },
           "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/SKILL.md",
-            "sha256": "4f5e2580d190eeffb239fca65da80c1c0f7b80d74a21a727f3115aed24b24724",
-            "size": 1656
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/SKILL-windows-x86_64.md",
+            "sha256": "dc75a3b3e3a1813ee5437c4db51f069c873f6ca3705bc9613b3027a190ed98ed",
+            "size": 2496
           }
         },
         "macos-aarch64": {
           "bin": {
             "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/remider-macos-aarch64",
-            "sha256": "2b5b86460b40c8aec374722a9ed2ccd9efe36fae8a97c8247d33bc6f07300fae",
-            "size": 2053556
+            "sha256": "583dd41136c05edd1b89bc37d154f941b609f55253345a85fe9558d326ac8b22",
+            "size": 1232528
           },
           "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/SKILL.md",
-            "sha256": "4f5e2580d190eeffb239fca65da80c1c0f7b80d74a21a727f3115aed24b24724",
-            "size": 1656
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/SKILL-macos-aarch64.md",
+            "sha256": "829bb7ff541ec620d6846e5b26930378d8810d75871408638f040bdae1f994e1",
+            "size": 2441
           }
         }
       }
