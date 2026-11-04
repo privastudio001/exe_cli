@@ -1,0 +1,123 @@
+# Push a tag named "<skill>-v<version>" (e.g. remider-v0.2.0) to build that skill's
+# folder for every platform, publish a GitHub release, and update index.json on main.
+name: release
+
+on:
+  push:
+    tags: ["*-v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - id: tag
+        run: |
+          tag="$GITHUB_REF_NAME"
+          echo "name=${tag%-v*}" >> "$GITHUB_OUTPUT"
+          echo "version=${tag##*-v}" >> "$GITHUB_OUTPUT"
+    outputs:
+      name: ${{ steps.tag.outputs.name }}
+      version: ${{ steps.tag.outputs.version }}
+
+  build:
+    needs: setup
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows-x86_64
+            ext: .exe
+          - os: macos-latest
+            platform: macos-aarch64
+            ext: ""
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ needs.setup.outputs.name }}
+    env:
+      NAME: ${{ needs.setup.outputs.name }}
+      PLATFORM: ${{ matrix.platform }}
+      EXT: ${{ matrix.ext }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build (Rust)
+        if: hashFiles(format('{0}/Cargo.toml', needs.setup.outputs.name)) != ''
+        run: |
+          cargo build --release --locked
+          mkdir -p ../out
+          cp "target/release/${NAME}${EXT}" "../out/${NAME}-${PLATFORM}${EXT}"
+
+      - uses: astral-sh/setup-uv@v6
+        if: hashFiles(format('{0}/pyproject.toml', needs.setup.outputs.name)) != ''
+
+      - name: Build (Python)
+        if: hashFiles(format('{0}/pyproject.toml', needs.setup.outputs.name)) != ''
+        run: |
+          # Optional extra PyInstaller flags, one per line (e.g. --collect-data trafilatura)
+          args=()
+          if [ -f pyinstaller.args ]; then
+            while IFS= read -r line; do [ -n "$line" ] && args+=($line); done < pyinstaller.args
+          fi
+          uv sync --locked
+          uv run pyinstaller --onefile --name "${NAME}-${PLATFORM}" "${args[@]}" main.py
+          mkdir -p ../out
+          cp "dist/${NAME}-${PLATFORM}${EXT}" ../out/
+
+      - name: Add SKILL.md
+        run: |
+          # SKILL-<platform>.md overrides the shared SKILL.md for that platform
+          if [ -f "SKILL-${PLATFORM}.md" ]; then
+            cp "SKILL-${PLATFORM}.md" ../out/
+          else
+            cp SKILL.md ../out/
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: out-${{ matrix.platform }}
+          path: out/
+          if-no-files-found: error
+
+  release:
+    needs: [setup, build]
+    runs-on: ubuntu-latest
+    concurrency: index-json
+    env:
+      NAME: ${{ needs.setup.outputs.name }}
+      VERSION: ${{ needs.setup.outputs.version }}
+      TAG: ${{ github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: out-*
+          path: out
+          merge-multiple: true
+
+      - name: Publish release
+        run: |
+          gh release view "$TAG" > /dev/null 2>&1 \
+            || gh release create "$TAG" --title "$TAG" --notes "" --verify-tag
+          gh release upload "$TAG" out/* --clobber
+
+      - name: Update index.json
+        run: python3 .github/scripts/update_index.py "$NAME" "$VERSION" "$TAG" out
+
+      - name: Commit index.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: update index.json for $TAG"
+          git pull --rebase origin main
+          git push origin HEAD:main

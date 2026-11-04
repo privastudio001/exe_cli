@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "skills": [
+    {
+      "name": "remider",
+      "version": "0.1.0",
+      "platforms": {
+        "windows-x86_64": {
+          "bin": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/remider-windows-x86_64.exe",
+            "sha256": "cec6430895bb81a39a94497612c9a34f74a6a60d87486f8bc5c76d5bb1c677e9",
+            "size": 1004902
+          },
+          "skill_md": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/SKILL.md",
+            "sha256": "4f5e2580d190eeffb239fca65da80c1c0f7b80d74a21a727f3115aed24b24724",
+            "size": 1656
+          }
+        },
+        "macos-aarch64": {
+          "bin": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/remider-macos-aarch64",
+            "sha256": "2b5b86460b40c8aec374722a9ed2ccd9efe36fae8a97c8247d33bc6f07300fae",
+            "size": 2053556
+          },
+          "skill_md": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/SKILL.md",
+            "sha256": "4f5e2580d190eeffb239fca65da80c1c0f7b80d74a21a727f3115aed24b24724",
+            "size": 1656
+          }
+        }
+      }
+    },
+    {
+      "name": "simple_duckduckgo_search",
+      "version": "1.0.0",
+      "platforms": {
+        "windows-x86_64": {
+          "bin": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_duckduckgo_search-v1.0.0/simple_duckduckgo_search-windows-x86_64.exe",
+            "sha256": "b40f54ff08c601341817531e1e036c7fa713e0c55572b35af038b179dcc2df5c",
+            "size": 8872427
+          },
+          "skill_md": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_duckduckgo_search-v1.0.0/SKILL.md",
+            "sha256": "e0bfa70dda0dd1af81c8b849bc980206dad364fa63e6ab50397419a82cc97375",
+            "size": 2203
+          }
+        },
+        "macos-aarch64": {
+          "bin": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_duckduckgo_search-v1.0.0/simple_duckduckgo_search-macos-aarch64",
+            "sha256": "46fa969c679b7e1e98c175621a71f904856383ba6ce5a838c445362619c6e83b",
+            "size": 8170528
+          },
+          "skill_md": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_duckduckgo_search-v1.0.0/SKILL.md",
+            "sha256": "e0bfa70dda0dd1af81c8b849bc980206dad364fa63e6ab50397419a82cc97375",
+            "size": 2203
+          }
+        }
+      }
+    },
+    {
+      "name": "simple_web_fetch",
+      "version": "1.0.0",
+      "platforms": {
+        "windows-x86_64": {
+          "bin": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_web_fetch-v1.0.0/simple_web_fetch-windows-x86_64.exe",
+            "sha256": "2e28df401cb4585813df6238b94f49e5e981913ab7e77c55ef0fd5c3490132f9",
+            "size": 12676566
+          },
+          "skill_md": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_web_fetch-v1.0.0/SKILL.md",
+            "sha256": "52df0d3a56b2d53a953e199372b70a67fe42a56c26601ffaa41e64c1f5740cd6",
+            "size": 1619
+          }
+        },
+        "macos-aarch64": {
+          "bin": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_web_fetch-v1.0.0/simple_web_fetch-macos-aarch64",
+            "sha256": "25e38ceae9016bc52ad1decf6114c089937c19c08c127c01516f14e563aa532f",
+            "size": 13213171
+          },
+          "skill_md": {
+            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_web_fetch-v1.0.0/SKILL.md",
+            "sha256": "52df0d3a56b2d53a953e199372b70a67fe42a56c26601ffaa41e64c1f5740cd6",
+            "size": 1619
+          }
+        }
+      }
+    }
+  ]
+}
