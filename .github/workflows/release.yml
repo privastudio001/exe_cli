@@ -63,7 +63,8 @@ jobs:
           # Optional extra PyInstaller flags, one per line (e.g. --collect-data trafilatura)
           args=()
           if [ -f pyinstaller.args ]; then
-            while IFS= read -r line; do [ -n "$line" ] && args+=($line); done < pyinstaller.args
+            # Strip the \r that Windows checkouts add (CRLF line endings)
+            while IFS= read -r line; do line="${line%$'\r'}"; [ -n "$line" ] && args+=($line); done < pyinstaller.args
           fi
           uv sync --locked
           uv run pyinstaller --onefile --name "${NAME}-${PLATFORM}" "${args[@]}" main.py
