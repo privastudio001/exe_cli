@@ -32,36 +32,6 @@
       }
     },
     {
-      "name": "simple_duckduckgo_search",
-      "version": "1.0.0",
-      "platforms": {
-        "windows-x86_64": {
-          "bin": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_duckduckgo_search-v1.0.0/simple_duckduckgo_search-windows-x86_64.exe",
-            "sha256": "b40f54ff08c601341817531e1e036c7fa713e0c55572b35af038b179dcc2df5c",
-            "size": 8872427
-          },
-          "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_duckduckgo_search-v1.0.0/SKILL.md",
-            "sha256": "e0bfa70dda0dd1af81c8b849bc980206dad364fa63e6ab50397419a82cc97375",
-            "size": 2203
-          }
-        },
-        "macos-aarch64": {
-          "bin": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_duckduckgo_search-v1.0.0/simple_duckduckgo_search-macos-aarch64",
-            "sha256": "46fa969c679b7e1e98c175621a71f904856383ba6ce5a838c445362619c6e83b",
-            "size": 8170528
-          },
-          "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple_duckduckgo_search-v1.0.0/SKILL.md",
-            "sha256": "e0bfa70dda0dd1af81c8b849bc980206dad364fa63e6ab50397419a82cc97375",
-            "size": 2203
-          }
-        }
-      }
-    },
-    {
       "name": "simple-web-fetch",
       "version": "0.1.0",
       "platforms": {
