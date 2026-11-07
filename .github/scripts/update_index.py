@@ -5,7 +5,7 @@ Usage: update_index.py <name> <version> <tag> <out_dir> <assets_dir>
 <out_dir>/<platform>/ holds each platform's install tree, and
 <out_dir>/<platform>.executables lists (one per line) the relative paths that
 get "executable": true (all others false). Every file is copied flat into <assets_dir> as
-<platform>.<dir with "/" as ".">.<fileName>, ready for `gh release upload`.
+<dir with "/" as ".">.<stem>-<platform><ext>, ready for `gh release upload`.
 """
 
 import hashlib
@@ -33,7 +33,9 @@ def platform_files(platform_dir: Path, assets: Path, base_url: str) -> list:
             continue
         rel = path.relative_to(platform_dir).as_posix()
         dir_, _, file_name = rel.rpartition("/")
-        asset = ".".join(p for p in (platform, dir_.replace("/", "."), file_name) if p)
+        # SKILL.md -> SKILL-windows-x86_64.md, remider.exe -> remider-windows-x86_64.exe
+        stem, ext = os.path.splitext(file_name)
+        asset = ".".join(p for p in (dir_.replace("/", "."), f"{stem}-{platform}{ext}") if p)
         shutil.copyfile(path, assets / asset)
 
         data = path.read_bytes()
