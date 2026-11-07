@@ -51,29 +51,45 @@
       "name": "simple-web-fetch",
       "version": "0.1.0",
       "platforms": {
-        "windows-x86_64": {
-          "bin": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/simple-web-fetch-windows-x86_64.exe",
-            "sha256": "f6671283cd6e552e8f63c460c558cd940e9a06e497816742b71a405007d80842",
-            "size": 72719354
-          },
-          "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/SKILL-windows-x86_64.md",
-            "sha256": "c8506e3da409865f253847c2064feb245f1c0830a8954bc145abfa1c04fc3f3a",
-            "size": 992
-          }
-        },
         "macos-aarch64": {
-          "bin": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/simple-web-fetch-macos-aarch64",
-            "sha256": "0bcd43bc59639990dbe0d822f7de5f2ca3dfc59fa319f7443836bc45f410a1d6",
-            "size": 76841568
-          },
-          "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/SKILL-macos-aarch64.md",
-            "sha256": "3c9ae3706f2f88fb86dd793e4cdf2fb6f649a961fb3d7811a1c20f15104e69e1",
-            "size": 966
-          }
+          "files": [
+            {
+              "dir": "",
+              "fileName": "SKILL.md",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/SKILL-macos-aarch64.md",
+              "sha256": "3c9ae3706f2f88fb86dd793e4cdf2fb6f649a961fb3d7811a1c20f15104e69e1",
+              "size": 966,
+              "executable": false
+            },
+            {
+              "dir": "",
+              "fileName": "simple-web-fetch",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/simple-web-fetch-macos-aarch64",
+              "sha256": "465983974b3fdf519d98885dc75a890a6818f780ed0c303cc5720e188ab5d7a9",
+              "size": 76841088,
+              "executable": true
+            }
+          ]
+        },
+        "windows-x86_64": {
+          "files": [
+            {
+              "dir": "",
+              "fileName": "SKILL.md",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/SKILL-windows-x86_64.md",
+              "sha256": "c8506e3da409865f253847c2064feb245f1c0830a8954bc145abfa1c04fc3f3a",
+              "size": 992,
+              "executable": false
+            },
+            {
+              "dir": "",
+              "fileName": "simple-web-fetch.exe",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/simple-web-fetch-windows-x86_64.exe",
+              "sha256": "5c7e793741e59b8231aa053b555ffa8446c5ab5a462e02fec1fe892517421013",
+              "size": 72719417,
+              "executable": true
+            }
+          ]
         }
       }
     },
