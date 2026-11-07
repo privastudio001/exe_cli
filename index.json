@@ -81,29 +81,45 @@
       "name": "simple-duckduckgo-search",
       "version": "0.1.0",
       "platforms": {
-        "windows-x86_64": {
-          "bin": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-duckduckgo-search-v0.1.0/simple-duckduckgo-search-windows-x86_64.exe",
-            "sha256": "5f007fd4ebf61dbe5301d95a2ffdfb2a00cd76cb44c7cb8bcf408dc60ab2c9fc",
-            "size": 21578570
-          },
-          "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-duckduckgo-search-v0.1.0/SKILL-windows-x86_64.md",
-            "sha256": "c0c96dcd833dd47bc22e72ab06e5a0790b453cde49a9c05879adc651355cb6b0",
-            "size": 999
-          }
-        },
         "macos-aarch64": {
-          "bin": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-duckduckgo-search-v0.1.0/simple-duckduckgo-search-macos-aarch64",
-            "sha256": "b101e94b8cea2e2461d08acfd6aab2139bc1b2d8103769742e766d9ec30b4bc9",
-            "size": 21273456
-          },
-          "skill_md": {
-            "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-duckduckgo-search-v0.1.0/SKILL-macos-aarch64.md",
-            "sha256": "09eaf4b26071d6bbdb5e5683e639ccecaa25a44645907436622de17a4c7d526c",
-            "size": 972
-          }
+          "files": [
+            {
+              "dir": "",
+              "fileName": "SKILL.md",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-duckduckgo-search-v0.1.0/SKILL-macos-aarch64.md",
+              "sha256": "09eaf4b26071d6bbdb5e5683e639ccecaa25a44645907436622de17a4c7d526c",
+              "size": 972,
+              "executable": false
+            },
+            {
+              "dir": "",
+              "fileName": "simple-duckduckgo-search",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-duckduckgo-search-v0.1.0/simple-duckduckgo-search-macos-aarch64",
+              "sha256": "f3381f5ef35529980098b5fec16408e2d82880e4ed6e2fb0390255d2609b00ff",
+              "size": 21275264,
+              "executable": true
+            }
+          ]
+        },
+        "windows-x86_64": {
+          "files": [
+            {
+              "dir": "",
+              "fileName": "SKILL.md",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-duckduckgo-search-v0.1.0/SKILL-windows-x86_64.md",
+              "sha256": "c0c96dcd833dd47bc22e72ab06e5a0790b453cde49a9c05879adc651355cb6b0",
+              "size": 999,
+              "executable": false
+            },
+            {
+              "dir": "",
+              "fileName": "simple-duckduckgo-search.exe",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-duckduckgo-search-v0.1.0/simple-duckduckgo-search-windows-x86_64.exe",
+              "sha256": "c1d2b0a658a4797f58ce7cc6a763d306bf2eae9777560d7e3665adb27c712093",
+              "size": 21577098,
+              "executable": true
+            }
+          ]
         }
       }
     }
