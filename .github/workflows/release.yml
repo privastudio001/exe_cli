@@ -47,12 +47,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Each platform's install tree goes in ../out/$PLATFORM/; the files that must be
+      # executable are listed in ../out/$PLATFORM.executables
       - name: Build (Rust)
         if: hashFiles(format('{0}/Cargo.toml', needs.setup.outputs.name)) != ''
         run: |
           cargo build --release --locked
-          mkdir -p ../out
-          cp "target/release/${NAME}${EXT}" "../out/${NAME}-${PLATFORM}${EXT}"
+          mkdir -p "../out/${PLATFORM}"
+          cp "target/release/${NAME}${EXT}" "../out/${PLATFORM}/"
+          echo "${NAME}${EXT}" >> "../out/${PLATFORM}.executables"
 
       - uses: astral-sh/setup-uv@v6
         if: hashFiles(format('{0}/pyproject.toml', needs.setup.outputs.name)) != ''
@@ -67,17 +70,18 @@ jobs:
             while IFS= read -r line; do line="${line%$'\r'}"; [ -n "$line" ] && args+=($line); done < pyinstaller.args
           fi
           uv sync --locked
-          uv run pyinstaller --onefile --name "${NAME}-${PLATFORM}" "${args[@]}" main.py
-          mkdir -p ../out
-          cp "dist/${NAME}-${PLATFORM}${EXT}" ../out/
+          uv run pyinstaller --onefile --name "${NAME}" "${args[@]}" main.py
+          mkdir -p "../out/${PLATFORM}"
+          cp "dist/${NAME}${EXT}" "../out/${PLATFORM}/"
+          echo "${NAME}${EXT}" >> "../out/${PLATFORM}.executables"
 
       - name: Add SKILL.md
         run: |
-          # SKILL-<platform>.md overrides the shared SKILL.md for that platform
+          # SKILL-<platform>.md overrides the shared SKILL.md; installed as SKILL.md either way
           if [ -f "SKILL-${PLATFORM}.md" ]; then
-            cp "SKILL-${PLATFORM}.md" ../out/
+            cp "SKILL-${PLATFORM}.md" "../out/${PLATFORM}/SKILL.md"
           else
-            cp SKILL.md ../out/
+            cp SKILL.md "../out/${PLATFORM}/SKILL.md"
           fi
 
       - uses: actions/upload-artifact@v4
@@ -106,14 +110,14 @@ jobs:
           path: out
           merge-multiple: true
 
+      - name: Update index.json
+        run: python3 .github/scripts/update_index.py "$NAME" "$VERSION" "$TAG" out assets
+
       - name: Publish release
         run: |
           gh release view "$TAG" > /dev/null 2>&1 \
             || gh release create "$TAG" --title "$TAG" --notes "" --verify-tag
-          gh release upload "$TAG" out/* --clobber
-
-      - name: Update index.json
-        run: python3 .github/scripts/update_index.py "$NAME" "$VERSION" "$TAG" out
+          gh release upload "$TAG" assets/* --clobber
 
       - name: Commit index.json
         run: |
