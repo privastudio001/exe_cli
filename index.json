@@ -11,8 +11,8 @@
               "dir": "",
               "fileName": "SKILL.md",
               "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/SKILL-macos-aarch64.md",
-              "sha256": "829bb7ff541ec620d6846e5b26930378d8810d75871408638f040bdae1f994e1",
-              "size": 2441,
+              "sha256": "7b345ecc088349542c454a989521e8395d9676620db25fc1ca6a5f315f0f979f",
+              "size": 2442,
               "executable": false
             },
             {
@@ -31,15 +31,15 @@
               "dir": "",
               "fileName": "SKILL.md",
               "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/SKILL-windows-x86_64.md",
-              "sha256": "dc75a3b3e3a1813ee5437c4db51f069c873f6ca3705bc9613b3027a190ed98ed",
-              "size": 2496,
+              "sha256": "25bd579c54b89be042885f128a2c3fa4cd632824e440e9cfc4a567794e0d3772",
+              "size": 2497,
               "executable": false
             },
             {
               "dir": "",
               "fileName": "remider.exe",
               "url": "https://github.com/privastudio001/exe_cli/releases/download/remider-v0.1.0/remider-windows-x86_64.exe",
-              "sha256": "ea9c540c2e5f2cea7c8bde1cbd313b5d3ea44886795e1e9e7efdf5a1e57022c9",
+              "sha256": "203a579f3485ae3700bf4148c6a00156dbaac2ccda0764d3a13c8636370c7bfa",
               "size": 880128,
               "executable": true
             }
