@@ -57,16 +57,16 @@
               "dir": "",
               "fileName": "SKILL.md",
               "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/SKILL-macos-aarch64.md",
-              "sha256": "3c9ae3706f2f88fb86dd793e4cdf2fb6f649a961fb3d7811a1c20f15104e69e1",
-              "size": 966,
+              "sha256": "b44f7cc3bfdcb31dd4d6ed4786a23d78289577e50292aa67c57b22ba6b2fe7a5",
+              "size": 967,
               "executable": false
             },
             {
               "dir": "",
               "fileName": "simple-web-fetch",
               "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/simple-web-fetch-macos-aarch64",
-              "sha256": "465983974b3fdf519d98885dc75a890a6818f780ed0c303cc5720e188ab5d7a9",
-              "size": 76841088,
+              "sha256": "40934e932fe1e43e73b90265b2adb47f322c57f6b213c2daedf3964dc18477c5",
+              "size": 76841472,
               "executable": true
             }
           ]
@@ -77,16 +77,16 @@
               "dir": "",
               "fileName": "SKILL.md",
               "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/SKILL-windows-x86_64.md",
-              "sha256": "c8506e3da409865f253847c2064feb245f1c0830a8954bc145abfa1c04fc3f3a",
-              "size": 992,
+              "sha256": "a3db3d979496df029c5dbe13127d51037bc23bc220b4c95b08f3da9cd0f0d6f1",
+              "size": 993,
               "executable": false
             },
             {
               "dir": "",
               "fileName": "simple-web-fetch.exe",
               "url": "https://github.com/privastudio001/exe_cli/releases/download/simple-web-fetch-v0.1.0/simple-web-fetch-windows-x86_64.exe",
-              "sha256": "5c7e793741e59b8231aa053b555ffa8446c5ab5a462e02fec1fe892517421013",
-              "size": 72719417,
+              "sha256": "da16717846c0a46af8655e874f779c8a15a08b6cfb1d81abf692adbff37dcf2e",
+              "size": 72719498,
               "executable": true
             }
           ]
