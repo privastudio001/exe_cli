@@ -1,7 +1,7 @@
 ---
 name: simple-duckduckgo-search
 description: Search the web with DuckDuckGo and return titles, URLs and snippets using the bundled command-line tool (simple-duckduckgo-search). Use whenever the user asks about recent events or something you don't know.
-enable: true
+enable: false
 ---
 
 ## When to use

@@ -1,7 +1,7 @@
 ---
 name: remider
 description: Set, list and delete reminders using the bundled command-line tool (remider). Use whenever the user asks to be reminded of something, or wants to see or cancel their reminders.
-enable: true
+enable: false
 ---
 
 ## When to use

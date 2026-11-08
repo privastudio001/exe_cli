@@ -1,7 +1,7 @@
 ---
 name: simple-web-fetch
 description: Fetch a web page and return its content as clean readable text using the bundled command-line tool (simple-web-fetch), not curl or wget. Use whenever the user gives a URL or asks to read a web page.
-enable: true
+enable: false
 ---
 
 ## When to use
