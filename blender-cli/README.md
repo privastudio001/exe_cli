@@ -1,3 +1,6 @@
+## demo
+![demo](docs/demo.gif)
+
 ## data flow
 ```
 llm agent -> blender-cli -> TCP socket -> Blender Add-on
