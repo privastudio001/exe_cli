@@ -1,7 +1,7 @@
 ---
 name: blender-cli
 description: Inspect and control a running Blender scene with the blender-cli command-line tool — list objects, read an object's transform/materials/bbox, run bpy Python, export GLB/FBX, and look up bpy API or node sockets. Use whenever the user asks to see, create, modify, or export anything "in Blender", "in my scene", or in a 3D model/object. If the command fails with "cannot connect to Blender", the reply MUST tell the user to open Blender, press N in the 3D Viewport, open the "MCP for Blender" tab and click Connect (default localhost:9876).
-enable: true
+enable: false
 ---
 
 ## When to use
