@@ -101,6 +101,7 @@ enum Command {
             only `bpy` is pre-imported.\n\n\
             Examples:\n  \
             blender-cli exec -c 'import bpy; print(len(bpy.data.objects))'\n  \
+            blender-cli exec -c \"for o in bpy.data.objects:\" -c \"    print(o.name)\"\n  \
             blender-cli exec script.py\n  \
             cat script.py | blender-cli exec"
     )]
@@ -109,9 +110,10 @@ enum Command {
         #[arg(group = "src")]
         file: Option<PathBuf>,
 
-        /// Python code to run, given inline
+        /// Python code to run, given inline; repeat -c for multiple lines
+        /// (each -c is one line, indentation kept)
         #[arg(short, long, group = "src")]
-        code: Option<String>,
+        code: Vec<String>,
     },
 
     /// Export the scene, the selection, or named objects to GLB/FBX
@@ -260,11 +262,11 @@ fn parse_kv(pairs: &[String]) -> Result<Value> {
     Ok(Value::Object(map))
 }
 
-/// Code from -c, a file, or stdin (no file or "-").
-fn read_code(file: Option<PathBuf>, code: Option<String>) -> Result<String> {
+/// Code from -c (repeated -c = one line each), a file, or stdin (no file or "-").
+fn read_code(file: Option<PathBuf>, code: Vec<String>) -> Result<String> {
     Ok(match (code, file) {
-        (Some(code), _) => code,
-        (None, Some(path)) if path.as_os_str() != "-" => fs::read_to_string(&path)
+        (code, _) if !code.is_empty() => code.join("\n"),
+        (_, Some(path)) if path.as_os_str() != "-" => fs::read_to_string(&path)
             .with_context(|| format!("cannot read {}", path.display()))?,
         _ => {
             let mut buf = String::new();

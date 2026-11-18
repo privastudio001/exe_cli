@@ -22,9 +22,8 @@ blender-cli.exe {args}
 | `find [text] [-n N]` | Search objects, materials and collections by partial name (case-insensitive). No text lists everything. `-n` caps results (default 30, max 100). Use it to get the exact name. |
 | `object <name>` | One object by exact name: transform, visibility, materials, bbox, mesh stats. |
 | `screenshot` | Save the 3D viewport as it is shown now (view angle, shading) to an image and print its `filepath`. Then open that file to see the result. Saved next to the blender-cli executable as `screenshot-YYYYMMDD-HHMMSS.png` (local time), so earlier shots are kept; `--max-size <px>` (default 800), `-f jpeg`. Use it to check how a model looks, not its numbers. |
-| `exec -c '<python>'` | Run Python inside Blender. Only `bpy` is pre-imported; only `print()` output comes back, as `{"executed": true, "result": "<stdout>"}`. |
-| `exec <file>` | Same, reading the code from a file. |
-| `exec` (stdin) | Same, reading the code from stdin, e.g. a heredoc `exec <<'EOF' … EOF` for multi-line code. |
+| `exec -c "<line>" [-c "<line>" …]` | Run Python inside Blender. Each `-c` is one line of code (indentation kept), joined with newlines, so blocks (`for`, `if`, `def`) work. Only `bpy` is pre-imported; only `print()` output comes back, as `{"executed": true, "result": "<stdout>"}`. |
+| `exec <file>` | Same, reading the code from a `.py` file. |
 | `export <path>` | Export to GLB (default). `-f fbx` for FBX, `-o <name>` per object with its children (repeatable), `--selected` for the selection only, `--no-modifiers` to keep modifiers unapplied. |
 | `api <query>` | Look up bpy: a type, `Type.property`, `Type.method` or `bpy.ops.<category>.<op>`. Use it before using an operator argument, property or enum value you are not sure of. |
 | `node <bl_idname>` | A node type's properties and input/output sockets. `--set key=value` (repeatable) for mode-dependent nodes, e.g. `node ShaderNodeMix --set data_type=RGBA`. |
@@ -35,6 +34,12 @@ Global options (any command): `--timeout <seconds>` (default 5; raise it for big
 Results print to stdout as JSON. Errors print to stderr with a non-zero exit code; a Python error shows its traceback.
 
 Rules for `exec`:
+- Commands run through Windows `cmd /C`, so:
+  - Wrap every `-c` value in double quotes `"…"`; single quotes do not quote in cmd, and an unquoted `>` `<` `|` `&` `^` is a shell operator (`z>0]` would create a file named `0]`).
+  - Inside the code use single quotes only (`'Cube'`); never put `"` in the code.
+  - Do not use `%` (cmd expands `%NAME%` even in quotes); use f-strings instead.
+  - Write the whole command on one line; no `^` continuation, no heredoc.
+- One `-c` per line of code; put the block's indentation inside the quotes: `-c "for o in bpy.data.objects:" -c "    print(o.name)"`.
 - End the code with `print(json.dumps({...}))` to report what was done.
 - Blender renames duplicates (`Cube` → `Cube.001`), so always print the real name.
 - Never guess operator arguments, property names or enum values; check with `api` first.
@@ -47,9 +52,10 @@ Rules for `exec`:
 | Find objects named like "chair" | `blender-cli.exe find chair -n 5` |
 | Details of the Cube | `blender-cli.exe object Cube` |
 | See what the viewport shows | `blender-cli.exe screenshot` |
-| Add a cube at (2, 0, 0) | `blender-cli.exe exec -c 'import bpy, json; bpy.ops.mesh.primitive_cube_add(location=(2,0,0)); print(json.dumps({"name": bpy.context.active_object.name}))'` |
-| Move Cube up 1 unit | `blender-cli.exe exec -c 'import bpy; o = bpy.data.objects["Cube"]; o.location.z += 1; print(tuple(o.location))'` |
-| Delete Cube | `blender-cli.exe exec -c 'import bpy; bpy.data.objects.remove(bpy.data.objects["Cube"]); print("deleted")'` |
+| Add a cube at (2, 0, 0) | `blender-cli.exe exec -c "import bpy, json; bpy.ops.mesh.primitive_cube_add(location=(2,0,0)); print(json.dumps({'name': bpy.context.active_object.name}))"` |
+| Move Cube up 1 unit | `blender-cli.exe exec -c "import bpy; o = bpy.data.objects['Cube']; o.location.z += 1; print(tuple(o.location))"` |
+| Delete Cube | `blender-cli.exe exec -c "import bpy; bpy.data.objects.remove(bpy.data.objects['Cube']); print('deleted')"` |
+| Multi-line: taper the top of a mesh | `blender-cli.exe exec -c "import bpy, bmesh, json" -c "o = bpy.data.objects['Cylinder']; bm = bmesh.new(); bm.from_mesh(o.data)" -c "for v in bm.verts:" -c "    if v.co.z > 0:" -c "        v.co.x *= 0.6; v.co.y *= 0.6" -c "bm.to_mesh(o.data); bm.free()" -c "print(json.dumps({'name': o.name}))"` |
 | Arguments of an operator | `blender-cli.exe api bpy.ops.mesh.primitive_uv_sphere_add` |
 | Sockets of the Principled BSDF | `blender-cli.exe node ShaderNodeBsdfPrincipled` |
 | Export Cube to FBX | `blender-cli.exe export cube.fbx -f fbx -o Cube --timeout 60` |
