@@ -84,6 +84,15 @@ jobs:
             cp SKILL.md "../out/${PLATFORM}/SKILL.md"
           fi
 
+      - name: Add extra files
+        if: hashFiles(format('{0}/release.extra.files', needs.setup.outputs.name)) != ''
+        run: |
+          # Optional extra files to ship as-is, one path per line (e.g. addon.py)
+          while IFS= read -r line; do
+            line="${line%$'\r'}"
+            [ -n "$line" ] && cp "$line" "../out/${PLATFORM}/"
+          done < release.extra.files
+
       - uses: actions/upload-artifact@v4
         with:
           name: out-${{ matrix.platform }}
