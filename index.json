@@ -138,6 +138,68 @@
           ]
         }
       }
+    },
+    {
+      "name": "blender-cli",
+      "version": "0.1.0",
+      "platforms": {
+        "macos-aarch64": {
+          "files": [
+            {
+              "dir": "",
+              "fileName": "SKILL.md",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/blender-cli-v0.1.0/SKILL-macos-aarch64.md",
+              "sha256": "d07512d0182fc4323bba7d2339ec7cdd5e691b3de6625f44087d533cdf21c654",
+              "size": 4692,
+              "executable": false
+            },
+            {
+              "dir": "",
+              "fileName": "addon.py",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/blender-cli-v0.1.0/addon-macos-aarch64.py",
+              "sha256": "fcc6cb57adc1f7143e8750235693543aec93c7c29785ad8da5d97e232479edda",
+              "size": 335660,
+              "executable": false
+            },
+            {
+              "dir": "",
+              "fileName": "blender-cli",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/blender-cli-v0.1.0/blender-cli-macos-aarch64",
+              "sha256": "c05b8ea9b9c7f83b86606851eae5f5e4165b4be5e5a2827a37a5d45beaa44f27",
+              "size": 1512416,
+              "executable": true
+            }
+          ]
+        },
+        "windows-x86_64": {
+          "files": [
+            {
+              "dir": "",
+              "fileName": "SKILL.md",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/blender-cli-v0.1.0/SKILL-windows-x86_64.md",
+              "sha256": "ce8cbafd6747ccfa6ed4897eac6c999c597f1589aed099c1472e82f3d8a7a146",
+              "size": 5731,
+              "executable": false
+            },
+            {
+              "dir": "",
+              "fileName": "addon.py",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/blender-cli-v0.1.0/addon-windows-x86_64.py",
+              "sha256": "3e69508425e887404dab640ddc75a723bbc337c659a53e59969bcb4bc75f0e2e",
+              "size": 343471,
+              "executable": false
+            },
+            {
+              "dir": "",
+              "fileName": "blender-cli.exe",
+              "url": "https://github.com/privastudio001/exe_cli/releases/download/blender-cli-v0.1.0/blender-cli-windows-x86_64.exe",
+              "sha256": "ee52a4ea407edbe6dc6d6ee0adf78707b12bbf3ca2d23180e76b2eafc2eb8c9b",
+              "size": 1119744,
+              "executable": true
+            }
+          ]
+        }
+      }
     }
   ]
 }
